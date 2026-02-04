@@ -11,7 +11,7 @@ from insert import insert_texto
 st.set_page_config(page_title="Análise Jurídica de PDF", layout="centered")
 st.title("⚖️ Análise Jurídica Automatizada")
 
-st.header("Envie um PDF para análise jurídica")
+st.header("TESTE DE ATT API")
 arquivo_pdf = st.file_uploader("Escolha um arquivo PDF de processo", type=["pdf"])
 
 API_URL = "http://192.168.30.10:5000/extract-async"
