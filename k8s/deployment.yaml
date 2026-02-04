@@ -15,13 +15,13 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       containers:
-      - name: juridico-api
-        image: pesdro/juridicoapi{{tag}}
-        ports:
-        - containerPort: 8501
-		    envFrom:
-        - configMapRef:
-            name: juridicoapi-env
+        - name: juridico-api
+          image: pesdro/juridicoapi:{{tag}}
+          ports:
+            - containerPort: 8501
+          envFrom:
+            - configMapRef:
+                name: juridicoapi-env
 ---
 apiVersion: v1
 kind: Service
@@ -32,6 +32,6 @@ spec:
   selector:
     app: juridico-api
   ports:
-    - port: 8501          # porta do Service
-      targetPort: 8501   # porta do container
-      nodePort: 38501    # porta exposta no node
+    - port: 8501
+      targetPort: 8501
+      nodePort: 38501
