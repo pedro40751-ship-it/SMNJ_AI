@@ -19,7 +19,7 @@ spec:
         image: pesdro/juridicoapi{{tag}}
         ports:
         - containerPort: 8501
-		envFrom:
+		    envFrom:
         - configMapRef:
             name: juridicoapi-env
 ---
