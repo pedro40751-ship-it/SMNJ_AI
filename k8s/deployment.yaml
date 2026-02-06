@@ -19,6 +19,13 @@ spec:
           image: pesdro/juridicoapi:{{tag}}
           ports:
             - containerPort: 8501
+                 resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"   
           envFrom:
             - configMapRef:
                 name: juridicoapi-env
@@ -28,13 +35,13 @@ kind: Service
 metadata:
   name: juridico-api
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: juridico-api
   ports:
-    - port: 8501
-      targetPort: 8501
-      nodePort: 32767
+  - name: http
+    port: 80
+    targetPort: 8501
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
