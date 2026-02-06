@@ -19,7 +19,7 @@ spec:
           image: pesdro/juridicoapi:{{tag}}
           ports:
             - containerPort: 8501
-              resources:
+          resources:
           requests:
             cpu: "200m"
             memory: "256Mi"
