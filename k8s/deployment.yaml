@@ -15,20 +15,20 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       containers:
-        - name: juridico-api
-          image: pesdro/juridicoapi:{{tag}}
-          ports:
-            - containerPort: 8501
-          resources:
+      - name: juridico-api
+        image: pesdro/juridicoapi:{{tag}}
+        ports:
+        - containerPort: 8501
+        envFrom:
+        - configMapRef:
+            name: juridicoapi-env
+        resources:
           requests:
             cpu: "200m"
             memory: "256Mi"
           limits:
             cpu: "500m"
-            memory: "512Mi"   
-          envFrom:
-            - configMapRef:
-                name: juridicoapi-env
+            memory: "512Mi"
 ---
 apiVersion: v1
 kind: Service
